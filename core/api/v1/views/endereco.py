@@ -9,7 +9,5 @@ class EnderecViewSet(viewsets.GenericViewSet,
                      mixins.RetrieveModelMixin,
                      mixins.UpdateModelMixin,
                     mixins.DestroyModelMixin):
+    queryset = Endereco.objects.all()
     serializer_class = EnderecoSerializer
-
-    def get_queryset(self, id):
-        return Endereco.objects.filter(id=id)
