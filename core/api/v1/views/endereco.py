@@ -4,10 +4,6 @@ from core.api.v1.serializer import EnderecoSerializer
 from core.models import Endereco
 
 
-class EnderecViewSet(viewsets.GenericViewSet,
-                    mixins.CreateModelMixin,
-                     mixins.RetrieveModelMixin,
-                     mixins.UpdateModelMixin,
-                    mixins.DestroyModelMixin):
+class EnderecViewSet(viewsets.ModelViewSet):
     queryset = Endereco.objects.all()
     serializer_class = EnderecoSerializer
