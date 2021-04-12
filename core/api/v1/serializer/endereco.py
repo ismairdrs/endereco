@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 from core.models import Endereco
 
-
+serializers.ListSerializer
 class EnderecoSerializer(serializers.ModelSerializer):
 
     class Meta:
