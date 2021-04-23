@@ -9,13 +9,17 @@ class EnderecViewSet(viewsets.ModelViewSet):
    # queryset = Endereco.objects.all()
     serializer_class = EnderecoSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_fields = ['usuario',]
+    #filterset_fields = ['usuario',]
 
     def get_queryset(self):
 
         user = self.request.query_params.get('usuario')
         if user:
-            queryset = Endereco.objects.filter(usuario=user)
+            try:
+                queryset = Endereco.objects.filter(usuario=str(user))
+            except:
+                content = {'error': 'ID inválido'}
+                raise ValidationError(content)
         else:
             content = {'Requisição inválida': 'ID do usuário é obrigatório no query params /?usuario=id'}
             raise ValidationError(content)
