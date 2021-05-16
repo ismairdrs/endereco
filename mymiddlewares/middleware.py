@@ -22,7 +22,4 @@ class Proxy():
         headers['Authorization'] = f'JWT {request.headers["Authorization"]}'
         result = requests.get(url, headers=headers)
 
-        if result.status_code == 200:
-            return True
-
-        raise PermissionDenied('Operação não permitida')
+        return result.status_code == 200
