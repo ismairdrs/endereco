@@ -24,4 +24,7 @@ class Proxy():
         headers['Authorization'] = f'JWT {request.headers["Authorization"]}'
         result = requests.get(url, headers=headers)
 
-        return result.status_code == 200
+        if result.status_code == 200:
+            return True
+        else:
+            return False
